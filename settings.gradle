@@ -8,3 +8,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "rappimovies"
 include ':app'
+include ':domain'
+include ':data'
+include ':usescases'
+include ':framework:apimanager'
