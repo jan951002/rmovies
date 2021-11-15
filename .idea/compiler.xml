@@ -4,7 +4,12 @@
     <bytecodeTargetLevel target="1.7">
       <module name="rappimovies.app" target="11" />
       <module name="rappimovies.data" target="11" />
+      <module name="rappimovies.framework.adaptermanager" target="11" />
       <module name="rappimovies.framework.apimanager" target="11" />
+      <module name="rappimovies.framework.baseui" target="11" />
+      <module name="rappimovies.framework.databasemanager" target="11" />
+      <module name="rappimovies.framework.imagemanager" target="11" />
+      <module name="rappimovies.framework.networkmanager" target="11" />
       <module name="rappimovies.usescases" target="11" />
     </bytecodeTargetLevel>
   </component>

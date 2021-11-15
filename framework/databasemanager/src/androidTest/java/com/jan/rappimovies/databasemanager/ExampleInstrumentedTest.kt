@@ -1,4 +1,4 @@
-package com.jan.rappimovies.app
+package com.jan.rappimovies.databasemanager
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.jan.rappimovies.app", appContext.packageName)
+        assertEquals("com.jan.rappimovies.databasemanager.test", appContext.packageName)
     }
 }

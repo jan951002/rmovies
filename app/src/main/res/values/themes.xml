@@ -13,4 +13,23 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.Rappimovies.TextTitleStyle">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Theme.Rappimovies.TextContentStyle">
+        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Theme.Rappimovies.TextImportantStyle">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Theme.Rappimovies.TintView">
+        <item name="android:tint">@color/purple_500</item>
+    </style>
 </resources>

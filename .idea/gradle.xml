@@ -14,7 +14,12 @@
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/framework" />
+            <option value="$PROJECT_DIR$/framework/adaptermanager" />
             <option value="$PROJECT_DIR$/framework/apimanager" />
+            <option value="$PROJECT_DIR$/framework/baseui" />
+            <option value="$PROJECT_DIR$/framework/databasemanager" />
+            <option value="$PROJECT_DIR$/framework/imagemanager" />
+            <option value="$PROJECT_DIR$/framework/networkmanager" />
             <option value="$PROJECT_DIR$/usescases" />
           </set>
         </option>

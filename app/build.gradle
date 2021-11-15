@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -50,10 +51,16 @@ dependencies {
 
     implementation project(":domain")
     implementation project(":data")
+    implementation project(":framework:adaptermanager")
     implementation project(":framework:apimanager")
+    implementation project(":framework:baseui")
+    implementation project(":framework:databasemanager")
+    implementation project(":framework:imagemanager")
+    implementation project(":framework:networkmanager")
     implementation project(":usescases")
 
     implementation generalDependencies.kotlin
+    implementation generalDependencies.kotlinReflect
     implementation generalDependencies.coreKtx
     implementation generalDependencies.appcompat
     implementation generalDependencies.material
