@@ -1,5 +1,4 @@
-package com.jan.rappimovies.apimanager.movie.model
-
+package com.jan.rappimovies.apimanager.movie
 
 import com.google.gson.annotations.SerializedName
 

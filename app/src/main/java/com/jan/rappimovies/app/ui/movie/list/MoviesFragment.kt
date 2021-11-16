@@ -14,8 +14,8 @@ import com.jan.rappimovies.app.ui.criterion.Criterion
 import com.jan.rappimovies.app.ui.criterion.CriterionAdapter
 import com.jan.rappimovies.app.ui.movie.list.adapter.MoviesAdapter
 import com.jan.rappimovies.baseui.BaseFragment
-import com.jan.rappimovies.domain.movie.MOVIE_POPULAR_CRITERION
-import com.jan.rappimovies.domain.movie.MOVIE_TOP_RATED_CRITERION
+import com.jan.rappimovies.domain.general.POPULAR_CRITERION
+import com.jan.rappimovies.domain.general.TOP_RATED_CRITERION
 import com.jan.rappimovies.domain.movie.Movie
 import com.jan.rappimovies.networkmanager.isOnline
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,8 +28,8 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding
     private lateinit var moviesAdapter: MoviesAdapter
     private val criteria: List<Criterion> by lazy {
         listOf(
-            Criterion(requireContext().getString(R.string.lab_popular), MOVIE_POPULAR_CRITERION),
-            Criterion(requireContext().getString(R.string.lab_top_rated), MOVIE_TOP_RATED_CRITERION)
+            Criterion(requireContext().getString(R.string.lab_popular), POPULAR_CRITERION),
+            Criterion(requireContext().getString(R.string.lab_top_rated), TOP_RATED_CRITERION)
         )
     }
 
