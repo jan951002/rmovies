@@ -2,10 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/movies_dest">
+    app:startDestination="@id/catalog_dest">
 
     <fragment
         android:id="@+id/movies_dest"
         android:name="com.jan.rappimovies.app.ui.movie.list.MoviesFragment"
         android:label="MoviesFragment" />
+    <fragment
+        android:id="@+id/catalog_dest"
+        android:name="com.jan.rappimovies.app.ui.catalog.CatalogFragment"
+        android:label="CatalogFragment" />
 </navigation>
