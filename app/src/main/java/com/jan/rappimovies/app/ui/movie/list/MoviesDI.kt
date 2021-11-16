@@ -26,6 +26,6 @@ class MoviesDI {
 
     @Provides
     @ViewModelScoped
-    fun updateMovieQuantityOnShoppingCartUseCaseProvider(movieRepository: MovieRepository) =
+    fun getTopRatedMoviesUseCaseProvider(movieRepository: MovieRepository) =
         GetTopRatedMoviesUseCase(movieRepository)
 }

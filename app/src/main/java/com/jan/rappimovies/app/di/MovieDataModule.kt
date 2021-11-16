@@ -1,7 +1,7 @@
 package com.jan.rappimovies.app.di
 
 import com.jan.rappimovies.apimanager.createWebService
-import com.jan.rappimovies.apimanager.movie.MovieDBApi
+import com.jan.rappimovies.apimanager.MovieDBApi
 import com.jan.rappimovies.apimanager.movie.MovieRemoteDataSourceImpl
 import com.jan.rappimovies.data.movie.MovieLocalDataSource
 import com.jan.rappimovies.data.movie.MovieRemoteDataSource
@@ -20,11 +20,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class MovieDataModule {
-
-    @Provides
-    @Singleton
-    fun movieDBApiProvider(@Named("movieDBBaseUrl") movieDBBaseUrl: String) =
-        createWebService<MovieDBApi>(movieDBBaseUrl)
 
     @Provides
     @Singleton

@@ -1,6 +1,5 @@
 package com.jan.rappimovies.apimanager.movie
 
-import com.jan.rappimovies.apimanager.movie.model.MovieResponse
 import com.jan.rappimovies.domain.movie.Movie
 
 fun MovieResponse.toMovieDomain(): Movie = Movie(
