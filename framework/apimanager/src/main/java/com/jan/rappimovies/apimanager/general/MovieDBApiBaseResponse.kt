@@ -1,12 +1,13 @@
-package com.jan.rappimovies.apimanager.movie.model
+package com.jan.rappimovies.apimanager.general
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import com.jan.rappimovies.apimanager.movie.MovieResponse
 
-data class MoviesPopularResponse(
+data class MovieDBApiBaseResponse<T>(
     @SerializedName("results")
     @Expose
-    var results: List<MovieResponse>,
+    var results: List<T>,
 
     @SerializedName("page")
     @Expose
