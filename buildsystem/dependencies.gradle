@@ -16,6 +16,7 @@ ext {
     kotlin_version = "1.5.31"
     legacy_support_version = "1.0.0"
     livedata_version = "2.3.1"
+    loading_version = "1.4.0"
     material_version = "1.4.0"
     mockito_core_version = '3.4.6'
     mockito_kotlin_version = '2.2.0'
@@ -41,6 +42,7 @@ ext {
             kotlinReflect     : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
             legacySupport     : "androidx.legacy:legacy-support-v4:$legacy_support_version",
             livedata          : "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_version",
+            loading           : "com.github.ybq:Android-SpinKit:$loading_version",
             material          : "com.google.android.material:material:$material_version",
             navigationFragment: "androidx.navigation:navigation-fragment-ktx:$navigation_version",
             navigationUi      : "androidx.navigation:navigation-ui-ktx:$navigation_version",

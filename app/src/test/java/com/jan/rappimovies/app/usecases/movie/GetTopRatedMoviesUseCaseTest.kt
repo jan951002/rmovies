@@ -43,9 +43,9 @@ class GetTopRatedMoviesUseCaseTest {
     fun `get top rate movies empty result`() = runBlockingTest {
         val expectedResult = listOf<Movie>()
 
-        given { getTopRatedMoviesUseCase.invoke() }.willReturn(flowOf(expectedResult))
+        given { getTopRatedMoviesUseCase.invoke(true) }.willReturn(flowOf(expectedResult))
 
-        getTopRatedMoviesUseCase.invoke().collect { result ->
+        getTopRatedMoviesUseCase.invoke(true).collect { result ->
             assertEquals(expectedResult, result)
         }
     }
@@ -54,9 +54,9 @@ class GetTopRatedMoviesUseCaseTest {
     fun `get top rate movies with data result`() = runBlockingTest {
         val expectedResult = sortedListByTopRated
 
-        given { getTopRatedMoviesUseCase.invoke() }.willReturn(flowOf(expectedResult))
+        given { getTopRatedMoviesUseCase.invoke(true) }.willReturn(flowOf(expectedResult))
 
-        getTopRatedMoviesUseCase.invoke().collect { result ->
+        getTopRatedMoviesUseCase.invoke(true).collect { result ->
             assertEquals(expectedResult, result)
         }
     }
@@ -65,9 +65,9 @@ class GetTopRatedMoviesUseCaseTest {
     fun `get first movie sorted by top rated`() = runBlockingTest {
         val expectedResult = sortedListByTopRated
 
-        given { getTopRatedMoviesUseCase.invoke() }.willReturn(flowOf(expectedResult))
+        given { getTopRatedMoviesUseCase.invoke(true) }.willReturn(flowOf(expectedResult))
 
-        getTopRatedMoviesUseCase.invoke().collect { result ->
+        getTopRatedMoviesUseCase.invoke(true).collect { result ->
             assertEquals(expectedResult.first(), result.first())
         }
     }

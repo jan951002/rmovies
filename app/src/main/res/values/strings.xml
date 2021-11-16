@@ -3,6 +3,8 @@
     <string name="movies_db_base_url">https://api.themoviedb.org/3/</string>
     <string name="movies_db_api_key">f7c6a12a06b5eb5a4b4dc11b246fe919</string>
     <string name="movies_db_base_url_img">http://image.tmdb.org/t/p/w500</string>
+    <string name="lab_popular">Popular</string>
+    <string name="lab_top_rated">Top rated</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

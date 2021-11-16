@@ -7,8 +7,8 @@ import com.jan.rappimovies.domain.movie.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
-    fun getPopularMovies(): Flow<List<Movie>>
-    fun getTopRatedMovies(): Flow<List<Movie>>
+    fun getPopularMovies(isOnline: Boolean): Flow<List<Movie>>
+    fun getTopRatedMovies(isOnline: Boolean): Flow<List<Movie>>
     suspend fun checkRequireNewPage(
         lastVisible: Int, criterion: String, isFirstRequest: Boolean = false
     )
@@ -19,9 +19,11 @@ class MovieRepositoryImpl(
     private val movieRemoteDataSource: MovieRemoteDataSource
 ) : MovieRepository {
 
-    override fun getPopularMovies() = movieLocalDataSource.getPopularMovies()
+    override fun getPopularMovies(isOnline: Boolean) =
+        movieLocalDataSource.getPopularMovies(isOnline)
 
-    override fun getTopRatedMovies() = movieLocalDataSource.getTopRatedMovies()
+    override fun getTopRatedMovies(isOnline: Boolean) =
+        movieLocalDataSource.getTopRatedMovies(isOnline)
 
     override suspend fun checkRequireNewPage(
         lastVisible: Int, criterion: String, isFirstRequest: Boolean

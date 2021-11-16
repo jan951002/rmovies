@@ -105,4 +105,7 @@ dependencies {
     implementation generalDependencies.room
     implementation generalDependencies.roomKtx
     kapt compilerDependencies.room
+
+    //Loading
+    implementation generalDependencies.loading
 }

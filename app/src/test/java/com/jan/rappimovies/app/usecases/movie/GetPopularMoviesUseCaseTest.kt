@@ -22,7 +22,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
-class GetPopularMoviesUseCaseTest{
+class GetPopularMoviesUseCaseTest {
 
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
@@ -43,9 +43,9 @@ class GetPopularMoviesUseCaseTest{
     fun `get popular movies empty result`() = runBlockingTest {
         val expectedResult = listOf<Movie>()
 
-        given { getPopularMoviesUseCase.invoke() }.willReturn(flowOf(expectedResult))
+        given { getPopularMoviesUseCase.invoke(true) }.willReturn(flowOf(expectedResult))
 
-        getPopularMoviesUseCase.invoke().collect { result ->
+        getPopularMoviesUseCase.invoke(true).collect { result ->
             assertEquals(expectedResult, result)
         }
     }
@@ -54,9 +54,9 @@ class GetPopularMoviesUseCaseTest{
     fun `get popular movies with data result`() = runBlockingTest {
         val expectedResult = sortedListByPopularity
 
-        given { getPopularMoviesUseCase.invoke() }.willReturn(flowOf(expectedResult))
+        given { getPopularMoviesUseCase.invoke(true) }.willReturn(flowOf(expectedResult))
 
-        getPopularMoviesUseCase.invoke().collect { result ->
+        getPopularMoviesUseCase.invoke(true).collect { result ->
             assertEquals(expectedResult, result)
         }
     }
@@ -65,9 +65,9 @@ class GetPopularMoviesUseCaseTest{
     fun `get first movie sorted by popularity`() = runBlockingTest {
         val expectedResult = sortedListByPopularity
 
-        given { getPopularMoviesUseCase.invoke() }.willReturn(flowOf(expectedResult))
+        given { getPopularMoviesUseCase.invoke(true) }.willReturn(flowOf(expectedResult))
 
-        getPopularMoviesUseCase.invoke().collect { result ->
+        getPopularMoviesUseCase.invoke(true).collect { result ->
             assertEquals(expectedResult.first(), result.first())
         }
     }

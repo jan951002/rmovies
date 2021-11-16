@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="content_margin_horizontal">20dp</dimen>
-    <dimen name="content_margin_vertical">20dp</dimen>
+    <dimen name="content_margin_vertical">8dp</dimen>
     <dimen name="item_horizontal_margin">8dp</dimen>
+    <dimen name="item_minimum_horizontal_margin">2dp</dimen>
     <dimen name="item_vertical_margin">8dp</dimen>
     <dimen name="item_double_vertical_margin">16dp</dimen>
     <dimen name="item_double_horizontal_margin">16dp</dimen>

@@ -1,9 +1,10 @@
 package com.jan.rappimovies.app.ui.movie.list
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.jan.rappimovies.domain.movie.MOVIE_POPULAR_CRITERION
 import com.jan.rappimovies.domain.movie.MOVIE_TOP_RATED_CRITERION
 import com.jan.rappimovies.domain.movie.Movie
 import com.jan.rappimovies.usescases.movie.CheckRequireNewPageUseCase
@@ -22,16 +23,41 @@ class MoviesViewModel @Inject constructor(
     private val getTopRatedMoviesUseCase: GetTopRatedMoviesUseCase
 ) : ViewModel() {
 
-    val movies: LiveData<List<Movie>> = getPopularMoviesUseCase.invoke().asLiveData()
+    private val _movies = MutableLiveData<List<Movie>>()
+    val movies: LiveData<List<Movie>> = _movies
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
     val lastVisible = MutableStateFlow(0)
+    private var currentCriterion = ""
 
     init {
         viewModelScope.launch {
-            lastVisible.collect { notifyLastVisible(it) }
+            lastVisible.collect { notifyLastVisible(it, currentCriterion) }
         }
     }
 
-    private suspend fun notifyLastVisible(lastVisible: Int) {
-        checkRequireNewPageUseCase.invoke(lastVisible, MOVIE_TOP_RATED_CRITERION, lastVisible == 0)
+    private suspend fun notifyLastVisible(lastVisible: Int, criterion: String) {
+        if (criterion.isNotBlank())
+            checkRequireNewPageUseCase.invoke(lastVisible, criterion, lastVisible == 0)
+    }
+
+    suspend fun changeCriterion(criterion: String, isOnline: Boolean) {
+        _loading.value = true
+        currentCriterion = criterion
+        if (isOnline) {
+            notifyLastVisible(0, criterion)
+        }
+        when (criterion) {
+            MOVIE_POPULAR_CRITERION -> getPopularMoviesUseCase.invoke(isOnline)
+                .collect { movies ->
+                    _loading.value = false
+                    _movies.value = movies
+                }
+            MOVIE_TOP_RATED_CRITERION -> getTopRatedMoviesUseCase.invoke(isOnline)
+                .collect { movies ->
+                    _loading.value = false
+                    _movies.value = movies
+                }
+        }
     }
 }

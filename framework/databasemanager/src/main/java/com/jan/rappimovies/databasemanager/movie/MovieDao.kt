@@ -18,9 +18,15 @@ interface MovieDao {
     @Query("DELETE FROM movies")
     suspend fun removeAllMovies()
 
-    @Query("SELECT * FROM movies ORDER BY local_id, popularity DESC")
+    @Query("SELECT * FROM movies ORDER BY local_id")
     fun getPopularMovies(): Flow<List<Movie>>
 
-    @Query("SELECT * FROM movies ORDER BY local_id, vote_average DESC")
+    @Query("SELECT * FROM movies ORDER BY popularity DESC, (popularity/vote_count)")
+    fun getPopularMoviesOffline(): Flow<List<Movie>>
+
+    @Query("SELECT * FROM movies ORDER BY local_id")
     fun getTopRatedMovies(): Flow<List<Movie>>
+
+    @Query("SELECT * FROM movies ORDER BY vote_average DESC, (vote_average/vote_count)")
+    fun getTopRatedMoviesOffline(): Flow<List<Movie>>
 }

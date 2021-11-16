@@ -11,5 +11,8 @@ class GetPopularMoviesUseCase(
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
 
-    fun invoke() = movieRepository.getPopularMovies().flowOn(dispatcher).conflate()
+    fun invoke(isOnline: Boolean) = movieRepository
+        .getPopularMovies(isOnline)
+        .flowOn(dispatcher)
+        .conflate()
 }

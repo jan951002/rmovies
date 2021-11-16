@@ -10,7 +10,7 @@ import com.jan.rappimovies.imagemanager.loadUrl
 class MovieViewHolder(
     private val binding: ItemMovieViewBinding,
     private val context: Context,
-    private val listener: OnItemClickListener
+    private val listener: OnMovieClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(movie: Movie) {

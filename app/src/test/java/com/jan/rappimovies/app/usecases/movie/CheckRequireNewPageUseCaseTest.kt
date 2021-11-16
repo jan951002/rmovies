@@ -1,6 +1,9 @@
 package com.jan.rappimovies.app.usecases.movie
 
 import com.jan.rappimovies.app.MainCoroutineRule
+import com.jan.rappimovies.app.general.IS_FIRST_REQUEST
+import com.jan.rappimovies.app.general.LAST_VISIBLE
+import com.jan.rappimovies.app.general.POPULAR_CRITERION
 import com.jan.rappimovies.data.movie.MovieRepository
 import com.jan.rappimovies.domain.movie.MOVIE_POPULAR_CRITERION
 import com.jan.rappimovies.usescases.movie.CheckRequireNewPageUseCase
@@ -18,12 +21,6 @@ import org.mockito.junit.MockitoJUnitRunner
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class CheckRequireNewPageUseCaseTest {
-
-    companion object {
-        private const val LAST_VISIBLE = 12
-        private const val CRITERION = MOVIE_POPULAR_CRITERION
-        private const val IS_FIRST_REQUEST = true
-    }
 
     @get:Rule
     val mainCoroutineRule = MainCoroutineRule()
@@ -44,10 +41,11 @@ class CheckRequireNewPageUseCaseTest {
 
         val expectedResult = Unit
 
-        `when`(checkRequireNewPageUseCase.invoke(LAST_VISIBLE, CRITERION, IS_FIRST_REQUEST))
+        `when`(checkRequireNewPageUseCase.invoke(LAST_VISIBLE, POPULAR_CRITERION, IS_FIRST_REQUEST))
             .thenReturn(expectedResult)
 
-        val result = checkRequireNewPageUseCase.invoke(LAST_VISIBLE, CRITERION, IS_FIRST_REQUEST)
+        val result =
+            checkRequireNewPageUseCase.invoke(LAST_VISIBLE, POPULAR_CRITERION, IS_FIRST_REQUEST)
         Assert.assertEquals(expectedResult, result)
     }
 }

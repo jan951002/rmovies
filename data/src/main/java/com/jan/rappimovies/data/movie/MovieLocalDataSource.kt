@@ -11,7 +11,7 @@ interface MovieLocalDataSource {
 
     suspend fun removeAllMovies()
 
-    fun getPopularMovies(): Flow<List<Movie>>
+    fun getPopularMovies(isOnline: Boolean): Flow<List<Movie>>
 
-    fun getTopRatedMovies(): Flow<List<Movie>>
+    fun getTopRatedMovies(isOnline: Boolean): Flow<List<Movie>>
 }

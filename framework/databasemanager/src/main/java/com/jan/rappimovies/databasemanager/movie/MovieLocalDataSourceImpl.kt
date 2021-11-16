@@ -13,11 +13,15 @@ class MovieLocalDataSourceImpl(private val movieDao: MovieDao) : MovieLocalDataS
 
     override suspend fun removeAllMovies() = movieDao.removeAllMovies()
 
-    override fun getPopularMovies() = movieDao.getPopularMovies().map { movies ->
-        movies.map { it.toMovieDomain() }
+    override fun getPopularMovies(isOnline: Boolean) = if (isOnline) {
+        movieDao.getPopularMovies().map { movies -> movies.map { it.toMovieDomain() } }
+    } else {
+        movieDao.getPopularMoviesOffline().map { movies -> movies.map { it.toMovieDomain() } }
     }
 
-    override fun getTopRatedMovies() = movieDao.getTopRatedMovies().map { movies ->
-        movies.map { it.toMovieDomain() }
+    override fun getTopRatedMovies(isOnline: Boolean) = if (isOnline) {
+        movieDao.getTopRatedMovies().map { movies -> movies.map { it.toMovieDomain() } }
+    } else {
+        movieDao.getTopRatedMoviesOffline().map { movies -> movies.map { it.toMovieDomain() } }
     }
 }
