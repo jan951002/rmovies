@@ -17,23 +17,31 @@
             app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
-        android:id="@+id/catalog_dest"
-        android:name="com.jan.rappimovies.app.ui.catalog.CatalogFragment"
-        android:label="CatalogFragment">
-        <action
-            android:id="@+id/action_catalog_dest_to_movie_detail_dest"
-            app:destination="@id/movie_detail_dest" />
-    </fragment>
-    <fragment
         android:id="@+id/series_dest"
         android:name="com.jan.rappimovies.app.ui.serie.list.SeriesFragment"
-        android:label="SeriesFragment" />
+        android:label="SeriesFragment">
+        <action
+            android:id="@+id/action_series_dest_to_serieDetailFragment"
+            app:destination="@id/serieDetailFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
     <fragment
         android:id="@+id/movie_detail_dest"
         android:name="com.jan.rappimovies.app.ui.movie.detail.MovieDetailFragment"
         android:label="MovieDetailFragment">
         <argument
             android:name="movie"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/serieDetailFragment"
+        android:name="com.jan.rappimovies.app.ui.serie.detail.SerieDetailFragment"
+        android:label="SerieDetailFragment">
+        <argument
+            android:name="serie"
             app:argType="string" />
     </fragment>
 </navigation>

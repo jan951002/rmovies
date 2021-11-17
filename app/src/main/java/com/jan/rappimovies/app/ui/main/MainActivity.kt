@@ -2,7 +2,6 @@ package com.jan.rappimovies.app.ui.main
 
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.jan.rappimovies.app.R
 import com.jan.rappimovies.app.databinding.ActivityMainBinding

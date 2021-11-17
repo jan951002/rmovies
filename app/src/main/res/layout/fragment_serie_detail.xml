@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="movie"
-            type="com.jan.rappimovies.domain.movie.Movie" />
+            name="serie"
+            type="com.jan.rappimovies.domain.serie.Serie" />
     </data>
 
     <ScrollView
@@ -44,7 +44,7 @@
 
             <ImageView
                 android:id="@+id/posterImage"
-                movieDetailImage="@{movie}"
+                serieDetailImage="@{serie}"
                 android:layout_width="@dimen/image_detail"
                 android:layout_height="@dimen/image_detail"
                 android:layout_marginTop="@dimen/image_detail_margin_top"
@@ -56,12 +56,12 @@
             <TextView
                 android:id="@+id/titleText"
                 style="@style/Theme.Rappimovies.TextTitleStyle"
-                movieDetailTitle="@{movie}"
+                serieDetailTitle="@{serie}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:layout_marginHorizontal="@dimen/content_margin_horizontal"
                 android:layout_marginTop="@dimen/item_double_vertical_margin"
-                android:gravity="center"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toTopOf="@id/posterImage"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -71,7 +71,7 @@
             <TextView
                 android:id="@+id/releaseDateText"
                 style="@style/Theme.Rappimovies.TextContentStyle"
-                movieDetailReleaseDate="@{movie}"
+                serieDetailReleaseDate="@{serie}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/content_margin_horizontal"
@@ -85,16 +85,16 @@
             <TextView
                 android:id="@+id/voteAverageText"
                 style="@style/Theme.Rappimovies.TextContentStyle"
-                movieDetailVoteAverage="@{movie}"
+                serieDetailVoteAverage="@{serie}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/content_margin_horizontal"
-                android:layout_marginTop="@dimen/item_double_vertical_margin"
+                android:layout_marginEnd="@dimen/content_margin_horizontal"
                 android:gravity="center_vertical"
                 app:drawableLeftCompat="@drawable/ic_star_rate"
+                app:layout_constraintBottom_toBottomOf="@+id/releaseDateText"
                 app:layout_constraintLeft_toRightOf="@id/halfVerticalGuideLine"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/posterImage" />
+                app:layout_constraintTop_toTopOf="@+id/releaseDateText" />
 
             <View
                 android:id="@+id/dividerGeneralInfo"
@@ -121,7 +121,7 @@
 
             <TextView
                 style="@style/Theme.Rappimovies.TextContentStyle"
-                movieDetailOverview="@{movie}"
+                serieDetailOverview="@{serie}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/content_margin_horizontal"

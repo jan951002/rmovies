@@ -47,7 +47,7 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding
 
     private fun initCriteriaAdapter() {
         val criterionAdapter = CriterionAdapter { criterionItemClick(it) }.apply {
-            criterionItemClick(criteria[0])
+            if (moviesViewModel.firstLaunch) criterionItemClick(criteria[0])
         }
         binding.criteriaRecycler.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)

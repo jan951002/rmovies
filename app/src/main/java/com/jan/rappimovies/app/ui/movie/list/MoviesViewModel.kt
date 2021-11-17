@@ -29,6 +29,8 @@ class MoviesViewModel @Inject constructor(
     val loading: LiveData<Boolean> = _loading
     val lastVisible = MutableStateFlow(0)
     private var currentCriterion = ""
+    var firstLaunch = true
+        private set
 
     init {
         viewModelScope.launch {
@@ -43,6 +45,7 @@ class MoviesViewModel @Inject constructor(
 
     suspend fun changeCriterion(criterion: String, isOnline: Boolean) {
         _loading.value = true
+        if (firstLaunch) firstLaunch = false
         currentCriterion = criterion
         if (isOnline) {
             notifyLastVisible(0, criterion)

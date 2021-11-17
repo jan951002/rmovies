@@ -12,4 +12,5 @@
     <string name="lab_overview">Overview</string>
     <string name="lab_vote_average">Vote average</string>
     <string name="lab_release">Release</string>
+    <string name="lab_first_episode">First episode</string>
 </resources>

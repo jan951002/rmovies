@@ -2,12 +2,14 @@ package com.jan.rappimovies.app.ui.serie.list
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.jan.rappimovies.app.R
 import com.jan.rappimovies.app.databinding.FragmentSeriesBinding
 import com.jan.rappimovies.app.ui.criterion.Criterion
@@ -26,6 +28,7 @@ class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding
 
     private val seriesViewModel: SeriesViewModel by viewModels()
     private lateinit var seriesAdapter: SeriesAdapter
+    private lateinit var navController: NavController
     private val criteria: List<Criterion> by lazy {
         listOf(
             Criterion(requireContext().getString(R.string.lab_popular), POPULAR_CRITERION),
@@ -37,13 +40,14 @@ class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding
         seriesAdapter = SeriesAdapter { serieItemClick(it) }
         initCriteriaAdapter()
         binding.seriesRecycler.adapter = seriesAdapter
+        navController = Navigation.findNavController(binding.root)
         observableViewModel()
         configScroll()
     }
 
     private fun initCriteriaAdapter() {
         val criterionAdapter = CriterionAdapter { criterionItemClick(it) }.apply {
-            criterionItemClick(criteria[0])
+            if (seriesViewModel.firstLaunch) criterionItemClick(criteria[0])
         }
         binding.criteriaRecycler.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -80,7 +84,10 @@ class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding
     }
 
     private fun serieItemClick(serie: Serie) {
-        Toast.makeText(requireContext(), serie.name, Toast.LENGTH_SHORT).show()
+        val direction = SeriesFragmentDirections.actionSeriesDestToSerieDetailFragment(
+            Gson().toJson(serie)
+        )
+        navController.navigate(direction)
     }
 
     private fun criterionItemClick(criterion: Criterion) {
