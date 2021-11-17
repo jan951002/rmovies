@@ -3,6 +3,7 @@ package com.jan.rappimovies.app.ui.catalog
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.navigation.Navigation
 import com.google.android.material.tabs.TabLayoutMediator
 import com.jan.rappimovies.app.R
 import com.jan.rappimovies.app.databinding.FragmentCatalogBinding

@@ -2,18 +2,38 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/catalog_dest">
+    app:startDestination="@id/movies_dest">
 
     <fragment
         android:id="@+id/movies_dest"
         android:name="com.jan.rappimovies.app.ui.movie.list.MoviesFragment"
-        android:label="MoviesFragment" />
+        android:label="MoviesFragment">
+        <action
+            android:id="@+id/action_movies_dest_to_movie_detail_dest"
+            app:destination="@id/movie_detail_dest"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
     <fragment
         android:id="@+id/catalog_dest"
         android:name="com.jan.rappimovies.app.ui.catalog.CatalogFragment"
-        android:label="CatalogFragment" />
+        android:label="CatalogFragment">
+        <action
+            android:id="@+id/action_catalog_dest_to_movie_detail_dest"
+            app:destination="@id/movie_detail_dest" />
+    </fragment>
     <fragment
         android:id="@+id/series_dest"
         android:name="com.jan.rappimovies.app.ui.serie.list.SeriesFragment"
         android:label="SeriesFragment" />
+    <fragment
+        android:id="@+id/movie_detail_dest"
+        android:name="com.jan.rappimovies.app.ui.movie.detail.MovieDetailFragment"
+        android:label="MovieDetailFragment">
+        <argument
+            android:name="movie"
+            app:argType="string" />
+    </fragment>
 </navigation>

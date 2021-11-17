@@ -17,16 +17,22 @@
     <style name="Theme.Rappimovies.TextTitleStyle">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:drawableTint">@color/grayB0</item>
+        <item name="android:drawablePadding">@dimen/drawable_margin</item>
     </style>
 
     <style name="Theme.Rappimovies.TextContentStyle">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:drawableTint">@color/grayB0</item>
+        <item name="android:drawablePadding">@dimen/drawable_margin</item>
     </style>
 
     <style name="Theme.Rappimovies.TextImportantStyle">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:drawableTint">@color/grayB0</item>
+        <item name="android:drawablePadding">@dimen/drawable_margin</item>
     </style>
 
     <style name="Theme.Rappimovies.TintView">

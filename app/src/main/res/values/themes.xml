@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Rappimovies" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Rappimovies" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -17,19 +17,27 @@
     <style name="Theme.Rappimovies.TextTitleStyle">
         <item name="android:textColor">@color/primary_text</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:drawableTint">@color/secondary_text</item>
+        <item name="android:drawablePadding">@dimen/drawable_margin</item>
     </style>
 
     <style name="Theme.Rappimovies.TextContentStyle">
         <item name="android:textColor">@color/secondary_text</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:drawableTint">@color/secondary_text</item>
+        <item name="android:drawablePadding">@dimen/drawable_margin</item>
     </style>
 
     <style name="Theme.Rappimovies.TextImportantStyle">
         <item name="android:textColor">@color/primary_text</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:drawableTint">@color/secondary_text</item>
+        <item name="android:drawablePadding">@dimen/drawable_margin</item>
     </style>
 
     <style name="Theme.Rappimovies.TintView">
         <item name="android:tint">@color/purple_500</item>
     </style>
+
+    <dimen name="drawable_margin">4dp</dimen>
 </resources>

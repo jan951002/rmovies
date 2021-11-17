@@ -34,7 +34,7 @@ class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        seriesAdapter = SeriesAdapter() { serieItemClick(it) }
+        seriesAdapter = SeriesAdapter { serieItemClick(it) }
         initCriteriaAdapter()
         binding.seriesRecycler.adapter = seriesAdapter
         observableViewModel()
