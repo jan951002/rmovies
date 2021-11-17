@@ -8,5 +8,8 @@
     <dimen name="item_double_vertical_margin">16dp</dimen>
     <dimen name="item_double_horizontal_margin">16dp</dimen>
     <dimen name="image_item">170dp</dimen>
+    <dimen name="image_detail">300dp</dimen>
     <dimen name="minimum_margin_vertical">2dp</dimen>
+    <dimen name="item_vertical_double_margin">16dp</dimen>
+    <dimen name="image_detail_margin_top">-150dp</dimen>
 </resources>
