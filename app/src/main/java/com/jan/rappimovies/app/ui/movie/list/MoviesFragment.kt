@@ -2,12 +2,14 @@ package com.jan.rappimovies.app.ui.movie.list
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.jan.rappimovies.app.R
 import com.jan.rappimovies.app.databinding.FragmentMoviesBinding
 import com.jan.rappimovies.app.ui.criterion.Criterion
@@ -26,6 +28,7 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding
 
     private val moviesViewModel: MoviesViewModel by viewModels()
     private lateinit var moviesAdapter: MoviesAdapter
+    private lateinit var navController: NavController
     private val criteria: List<Criterion> by lazy {
         listOf(
             Criterion(requireContext().getString(R.string.lab_popular), POPULAR_CRITERION),
@@ -37,13 +40,14 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding
         moviesAdapter = MoviesAdapter { movieItemClick(it) }
         initCriteriaAdapter()
         binding.moviesRecycler.adapter = moviesAdapter
+        navController = Navigation.findNavController(binding.root)
         observableViewModel()
         configScroll()
     }
 
     private fun initCriteriaAdapter() {
         val criterionAdapter = CriterionAdapter { criterionItemClick(it) }.apply {
-            criterionItemClick(criteria[0])
+            if (moviesViewModel.firstLaunch) criterionItemClick(criteria[0])
         }
         binding.criteriaRecycler.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -80,7 +84,10 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding
     }
 
     private fun movieItemClick(movie: Movie) {
-        Toast.makeText(requireContext(), movie.title, Toast.LENGTH_SHORT).show()
+        val direction = MoviesFragmentDirections.actionMoviesDestToMovieDetailDest(
+            Gson().toJson(movie)
+        )
+        navController.navigate(direction)
     }
 
     private fun criterionItemClick(criterion: Criterion) {

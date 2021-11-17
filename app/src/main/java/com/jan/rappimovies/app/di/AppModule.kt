@@ -3,9 +3,7 @@ package com.jan.rappimovies.app.di
 import android.app.Application
 import com.jan.rappimovies.apimanager.MovieDBApi
 import com.jan.rappimovies.apimanager.createWebService
-import com.jan.rappimovies.apimanager.movie.MovieRemoteDataSourceImpl
 import com.jan.rappimovies.app.R
-import com.jan.rappimovies.data.movie.MovieRemoteDataSource
 import com.jan.rappimovies.databasemanager.provideDatabase
 import dagger.Module
 import dagger.Provides
