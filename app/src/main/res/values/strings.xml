@@ -13,4 +13,10 @@
     <string name="lab_vote_average">Vote average</string>
     <string name="lab_release">Release</string>
     <string name="lab_first_episode">First episode</string>
+    <string name="lab_serie">Serie</string>
+    <string name="lab_movie">Movie</string>
+    <string name="lab_search">Search</string>
+    <string name="lab_search_suggestion">Search and discover all the movies and series we have for you!</string>
+    <string name="lab_search_not_found">No results found</string>
+    <string name="lab_search_general_error">An error has occurred. We are working to fix it!</string>
 </resources>

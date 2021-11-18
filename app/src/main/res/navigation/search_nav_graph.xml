@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/search_nav_graph"
+    app:startDestination="@id/search_dest">
+
+    <fragment
+        android:id="@+id/search_dest"
+        android:name="com.jan.rappimovies.app.ui.search.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_search_dest_to_search_movie_detail_dest"
+            app:destination="@id/search_movie_detail_dest" />
+        <action
+            android:id="@+id/action_search_dest_to_search_serie_detail_dest"
+            app:destination="@id/search_serie_detail_dest" />
+    </fragment>
+    <fragment
+        android:id="@+id/search_movie_detail_dest"
+        android:name="com.jan.rappimovies.app.ui.movie.detail.MovieDetailFragment"
+        android:label="MovieDetailFragment" >
+        <argument
+            android:name="movie"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/search_serie_detail_dest"
+        android:name="com.jan.rappimovies.app.ui.serie.detail.SerieDetailFragment"
+        android:label="SerieDetailFragment" >
+        <argument
+            android:name="serie"
+            app:argType="string" />
+    </fragment>
+</navigation>
