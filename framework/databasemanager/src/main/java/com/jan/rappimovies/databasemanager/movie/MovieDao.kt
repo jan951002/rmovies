@@ -29,4 +29,7 @@ interface MovieDao {
 
     @Query("SELECT * FROM movies ORDER BY vote_average DESC, (vote_average/vote_count)")
     fun getTopRatedMoviesOffline(): Flow<List<Movie>>
+
+    @Query("SELECT * FROM movies WHERE title LIKE :query")
+    suspend fun getMoviesByTitle(query: String): List<Movie>
 }

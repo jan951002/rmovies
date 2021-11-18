@@ -10,6 +10,7 @@
       <module name="rappimovies.framework.databasemanager" target="11" />
       <module name="rappimovies.framework.imagemanager" target="11" />
       <module name="rappimovies.framework.networkmanager" target="11" />
+      <module name="rappimovies.framework.textmanager" target="11" />
       <module name="rappimovies.usescases" target="11" />
     </bytecodeTargetLevel>
   </component>

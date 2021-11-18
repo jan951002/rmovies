@@ -20,6 +20,7 @@
             <option value="$PROJECT_DIR$/framework/databasemanager" />
             <option value="$PROJECT_DIR$/framework/imagemanager" />
             <option value="$PROJECT_DIR$/framework/networkmanager" />
+            <option value="$PROJECT_DIR$/framework/textmanager" />
             <option value="$PROJECT_DIR$/usescases" />
           </set>
         </option>
