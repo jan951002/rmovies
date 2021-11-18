@@ -35,7 +35,14 @@
         <item name="android:drawablePadding">@dimen/drawable_margin</item>
     </style>
 
-    <style name="Theme.Rappimovies.TintView">
-        <item name="android:tint">@color/purple_200</item>
+    <style name="Theme.Rappimovies.TextMinimumStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:drawableTint">@color/grayB0</item>
+        <item name="android:drawablePadding">@dimen/drawable_margin</item>
+    </style>
+
+    <style name="Theme.Rappimovies.BackIconTint">
+        <item name="android:tint">@color/gray45</item>
     </style>
 </resources>

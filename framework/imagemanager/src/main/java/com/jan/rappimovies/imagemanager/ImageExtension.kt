@@ -1,6 +1,8 @@
 package com.jan.rappimovies.imagemanager
 
 import android.widget.ImageView
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -27,4 +29,8 @@ fun ImageView.loadUrlCircle(urlString: String, placeholder: Int) {
         .apply(RequestOptions().transform(FitCenter(), RoundedCorners(40)))
         .placeholder(placeholder)
         .into(this)
+}
+
+fun ImageView.loadDrawable(@DrawableRes drawableRes: Int) {
+    setImageDrawable(ContextCompat.getDrawable(context, drawableRes))
 }

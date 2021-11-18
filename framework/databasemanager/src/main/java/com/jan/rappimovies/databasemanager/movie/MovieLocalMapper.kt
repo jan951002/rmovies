@@ -1,5 +1,6 @@
 package com.jan.rappimovies.databasemanager.movie
 
+import com.jan.rappimovies.domain.search.Search
 import com.jan.rappimovies.domain.movie.Movie as DomainMovie
 
 fun DomainMovie.toMovieRoom(): Movie = Movie(
@@ -37,3 +38,5 @@ fun Movie.toMovieDomain(): DomainMovie = DomainMovie(
     countOnCart = this.countOnCart,
     localId = localId
 )
+
+fun Movie.toMovieSearch() = Search.MovieSearch(toMovieDomain())

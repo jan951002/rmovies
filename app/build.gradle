@@ -58,6 +58,7 @@ dependencies {
     implementation project(":framework:databasemanager")
     implementation project(":framework:imagemanager")
     implementation project(":framework:networkmanager")
+    implementation project(":framework:textmanager")
     implementation project(":usescases")
 
     implementation generalDependencies.kotlin

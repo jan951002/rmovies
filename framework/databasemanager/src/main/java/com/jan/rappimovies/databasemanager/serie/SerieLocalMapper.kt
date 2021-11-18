@@ -1,5 +1,6 @@
 package com.jan.rappimovies.databasemanager.serie
 
+import com.jan.rappimovies.domain.search.Search
 import com.jan.rappimovies.domain.serie.Serie as DomainSerie
 
 fun Serie.toSerieDomain() = DomainSerie(
@@ -31,3 +32,5 @@ fun DomainSerie.toSerieRoom() = Serie(
     voteAverage = this.voteAverage,
     voteCount = this.voteCount,
 )
+
+fun Serie.toSerieSearch() = Search.SerieSearch(toSerieDomain())

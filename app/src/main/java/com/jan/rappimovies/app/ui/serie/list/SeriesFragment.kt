@@ -14,6 +14,7 @@ import com.jan.rappimovies.app.R
 import com.jan.rappimovies.app.databinding.FragmentSeriesBinding
 import com.jan.rappimovies.app.ui.criterion.Criterion
 import com.jan.rappimovies.app.ui.criterion.CriterionAdapter
+import com.jan.rappimovies.app.ui.main.MainActivity
 import com.jan.rappimovies.app.ui.serie.list.adapter.SeriesAdapter
 import com.jan.rappimovies.baseui.BaseFragment
 import com.jan.rappimovies.domain.general.POPULAR_CRITERION
@@ -43,6 +44,13 @@ class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding
         navController = Navigation.findNavController(binding.root)
         observableViewModel()
         configScroll()
+    }
+
+    override fun onResume() {
+        if (requireActivity() is MainActivity) {
+            (requireActivity() as MainActivity).configSearch(true)
+        }
+        super.onResume()
     }
 
     private fun initCriteriaAdapter() {

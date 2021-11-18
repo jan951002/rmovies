@@ -29,4 +29,7 @@ interface SerieDao {
 
     @Query("SELECT * FROM series ORDER BY vote_average DESC, (vote_average/vote_count)")
     fun getTopRatedSeriesOffline(): Flow<List<Serie>>
+
+    @Query("SELECT * FROM series WHERE name LIKE :query")
+    suspend fun getSeriesByName(query: String): List<Serie>
 }
