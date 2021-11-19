@@ -1,6 +1,7 @@
-package com.jan.rappimovies.app.ui.serie.list
+package com.jan.rappimovies.app.ui.serie
 
 import com.jan.rappimovies.data.serie.SerieRepository
+import com.jan.rappimovies.usescases.movie.GetSerieVideosUseCase
 import com.jan.rappimovies.usescases.serie.CheckRequireNewPageSerieUseCase
 import com.jan.rappimovies.usescases.serie.GetPopularSeriesUseCase
 import com.jan.rappimovies.usescases.serie.GetTopRatedSeriesUseCase
@@ -28,4 +29,9 @@ class SeriesDI {
     @ViewModelScoped
     fun getTopRatedSeriesUseCaseProvider(serieRepository: SerieRepository) =
         GetTopRatedSeriesUseCase(serieRepository)
+
+    @Provides
+    @ViewModelScoped
+    fun getSerieVideosUseCase(serieRepository: SerieRepository) =
+        GetSerieVideosUseCase(serieRepository)
 }
