@@ -9,6 +9,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.gson.Gson
 import com.jan.rappimovies.app.R
 import com.jan.rappimovies.app.databinding.FragmentSeriesBinding
@@ -20,12 +21,14 @@ import com.jan.rappimovies.baseui.BaseFragment
 import com.jan.rappimovies.domain.general.POPULAR_CRITERION
 import com.jan.rappimovies.domain.general.TOP_RATED_CRITERION
 import com.jan.rappimovies.domain.serie.Serie
+import com.jan.rappimovies.imagemanager.loadDrawable
 import com.jan.rappimovies.networkmanager.isOnline
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding::inflate) {
+class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding::inflate),
+    SwipeRefreshLayout.OnRefreshListener {
 
     private val seriesViewModel: SeriesViewModel by viewModels()
     private lateinit var seriesAdapter: SeriesAdapter
@@ -44,6 +47,8 @@ class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding
         navController = Navigation.findNavController(binding.root)
         observableViewModel()
         configScroll()
+        initSearchState()
+        binding.swipeRefreshLayout.setOnRefreshListener(this)
     }
 
     override fun onResume() {
@@ -67,9 +72,24 @@ class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding
         criterionAdapter.submitList(criteria)
     }
 
+    private fun initSearchState() {
+        binding.searchState.searchStateImage.loadDrawable(R.drawable.ic_not_found)
+        binding.searchState.searchStateText.text = getString(R.string.lab_search_not_found)
+    }
+
     private fun observableViewModel() {
         seriesViewModel.series.observe(viewLifecycleOwner, { series ->
-            series?.let { seriesAdapter.submitList(series) }
+            series?.let {
+                binding.swipeRefreshLayout.isRefreshing = false
+                if (series.isNotEmpty()) {
+                    binding.criteriaRecycler.visibility = View.VISIBLE
+                    binding.searchState.root.visibility = View.GONE
+                    seriesAdapter.submitList(series)
+                } else {
+                    binding.criteriaRecycler.visibility = View.GONE
+                    binding.searchState.root.visibility = View.VISIBLE
+                }
+            }
         })
 
         seriesViewModel.loading.observe(viewLifecycleOwner, { loading ->
@@ -106,5 +126,9 @@ class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding
         seriesViewModel.viewModelScope.launch {
             seriesViewModel.changeCriterion(criterion.query, requireContext().isOnline())
         }
+    }
+
+    override fun onRefresh() {
+        criterionItemClick(criteria[seriesViewModel.criterionPositionSelected])
     }
 }

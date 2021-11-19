@@ -63,46 +63,46 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
     private fun configVisible(searchState: SearchState) {
         when (searchState) {
             NEW_SEARCH -> {
-                binding.productsSearchState.searchStateImage.loadDrawable(R.drawable.ic_binoculars)
-                binding.productsSearchState.searchStateText.text =
+                binding.searchState.searchStateImage.loadDrawable(R.drawable.ic_binoculars)
+                binding.searchState.searchStateText.text =
                     getString(R.string.lab_search_suggestion)
                 binding.searchRecycler.visibility = View.GONE
                 binding.loadingSpinKit.visibility = View.GONE
-                binding.productsSearchState.root.visibility = View.VISIBLE
+                binding.searchState.root.visibility = View.VISIBLE
             }
             SEARCHED -> {
                 binding.searchRecycler.visibility = View.VISIBLE
                 binding.loadingSpinKit.visibility = View.GONE
-                binding.productsSearchState.root.visibility = View.GONE
+                binding.searchState.root.visibility = View.GONE
             }
             NOT_FOUND -> {
-                binding.productsSearchState.searchStateImage.loadDrawable(R.drawable.ic_not_found)
-                binding.productsSearchState.searchStateText.text =
+                binding.searchState.searchStateImage.loadDrawable(R.drawable.ic_not_found)
+                binding.searchState.searchStateText.text =
                     getString(R.string.lab_search_not_found)
                 binding.searchRecycler.visibility = View.GONE
                 binding.loadingSpinKit.visibility = View.GONE
-                binding.productsSearchState.root.visibility = View.VISIBLE
+                binding.searchState.root.visibility = View.VISIBLE
             }
             UNKNOWN_ERROR -> {
-                binding.productsSearchState.searchStateImage.loadDrawable(R.drawable.ic_error)
-                binding.productsSearchState.searchStateText.text =
+                binding.searchState.searchStateImage.loadDrawable(R.drawable.ic_error)
+                binding.searchState.searchStateText.text =
                     getString(R.string.lab_search_general_error)
                 binding.searchRecycler.visibility = View.GONE
                 binding.loadingSpinKit.visibility = View.GONE
-                binding.productsSearchState.root.visibility = View.VISIBLE
+                binding.searchState.root.visibility = View.VISIBLE
             }
             NETWORK_ERROR -> {
-                binding.productsSearchState.searchStateImage.loadDrawable(R.drawable.ic_error)
-                binding.productsSearchState.searchStateText.text =
+                binding.searchState.searchStateImage.loadDrawable(R.drawable.ic_error)
+                binding.searchState.searchStateText.text =
                     getString(R.string.lab_search_general_error)
                 binding.searchRecycler.visibility = View.GONE
                 binding.loadingSpinKit.visibility = View.GONE
-                binding.productsSearchState.root.visibility = View.VISIBLE
+                binding.searchState.root.visibility = View.VISIBLE
             }
             LOADING -> {
                 binding.searchRecycler.visibility = View.GONE
                 binding.loadingSpinKit.visibility = View.VISIBLE
-                binding.productsSearchState.root.visibility = View.GONE
+                binding.searchState.root.visibility = View.GONE
             }
         }
     }

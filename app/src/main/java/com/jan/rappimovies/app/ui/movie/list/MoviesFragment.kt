@@ -9,6 +9,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.gson.Gson
 import com.jan.rappimovies.app.R
 import com.jan.rappimovies.app.databinding.FragmentMoviesBinding
@@ -20,12 +21,14 @@ import com.jan.rappimovies.baseui.BaseFragment
 import com.jan.rappimovies.domain.general.POPULAR_CRITERION
 import com.jan.rappimovies.domain.general.TOP_RATED_CRITERION
 import com.jan.rappimovies.domain.movie.Movie
+import com.jan.rappimovies.imagemanager.loadDrawable
 import com.jan.rappimovies.networkmanager.isOnline
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MoviesFragment : BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding::inflate) {
+class MoviesFragment : BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding::inflate),
+    SwipeRefreshLayout.OnRefreshListener {
 
     private val moviesViewModel: MoviesViewModel by viewModels()
     private lateinit var moviesAdapter: MoviesAdapter
@@ -44,6 +47,8 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding
         navController = Navigation.findNavController(binding.root)
         observableViewModel()
         configScroll()
+        initSearchState()
+        binding.swipeRefreshLayout.setOnRefreshListener(this)
     }
 
     override fun onResume() {
@@ -67,9 +72,24 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding
         criterionAdapter.submitList(criteria)
     }
 
+    private fun initSearchState() {
+        binding.searchState.searchStateImage.loadDrawable(R.drawable.ic_not_found)
+        binding.searchState.searchStateText.text = getString(R.string.lab_search_not_found)
+    }
+
     private fun observableViewModel() {
         moviesViewModel.movies.observe(viewLifecycleOwner, { movies ->
-            movies?.let { moviesAdapter.submitList(movies) }
+            movies?.let {
+                binding.swipeRefreshLayout.isRefreshing = false
+                if (movies.isNotEmpty()) {
+                    binding.criteriaRecycler.visibility = View.VISIBLE
+                    binding.searchState.root.visibility = View.GONE
+                    moviesAdapter.submitList(movies)
+                } else {
+                    binding.criteriaRecycler.visibility = View.GONE
+                    binding.searchState.root.visibility = View.VISIBLE
+                }
+            }
         })
 
         moviesViewModel.loading.observe(viewLifecycleOwner, { loading ->
@@ -106,5 +126,9 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding
         moviesViewModel.viewModelScope.launch {
             moviesViewModel.changeCriterion(criterion.query, requireContext().isOnline())
         }
+    }
+
+    override fun onRefresh() {
+        criterionItemClick(criteria[moviesViewModel.criterionPositionSelected])
     }
 }
