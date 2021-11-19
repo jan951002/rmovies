@@ -55,7 +55,7 @@
             tools:listitem="@layout/item_movie_search_view" />
 
         <include
-            android:id="@+id/productsSearchState"
+            android:id="@+id/searchState"
             layout="@layout/content_search_state"
             android:layout_width="0dp"
             android:layout_height="0dp"

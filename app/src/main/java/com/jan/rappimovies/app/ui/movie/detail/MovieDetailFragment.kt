@@ -10,6 +10,7 @@ import com.jan.rappimovies.app.ui.main.MainActivity
 import com.jan.rappimovies.app.ui.video.VideoPlayerActivity
 import com.jan.rappimovies.baseui.BaseFragment
 import com.jan.rappimovies.domain.movie.Movie
+import com.jan.rappimovies.networkmanager.isOnline
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,7 +24,7 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding>(
         arguments?.getString("movie")?.let {
             val movie = Gson().fromJson(it, Movie::class.java)
             binding.movie = movie
-            movieDetailViewModel.getTrailer(movie.id)
+            if (requireContext().isOnline()) movieDetailViewModel.getTrailer(movie.id)
             observableViewModel()
         }
     }
