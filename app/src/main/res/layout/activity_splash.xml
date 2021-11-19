@@ -1,0 +1,32 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.splash.SplashActivity">
+
+        <ImageView
+            android:id="@+id/splash_image"
+            android:layout_width="@dimen/image_item"
+            android:layout_height="@dimen/image_item"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_splash_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/robotoRegularTextView"
+            style="@style/Theme.Rappimovies.TextTitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lab_welcome"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginVertical="@dimen/item_double_vertical_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/splash_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
