@@ -2,13 +2,10 @@ package com.jan.rappimovies.app.usecases.search
 
 import com.jan.rappimovies.app.MainCoroutineRule
 import com.jan.rappimovies.app.general.sortedListByTopRated
-import com.jan.rappimovies.data.movie.MovieRepository
 import com.jan.rappimovies.data.search.SearchRepository
 import com.jan.rappimovies.domain.general.Error
 import com.jan.rappimovies.domain.general.Result
-import com.jan.rappimovies.domain.movie.Movie
 import com.jan.rappimovies.domain.search.Search
-import com.jan.rappimovies.usescases.movie.GetTopRatedMoviesUseCase
 import com.jan.rappimovies.usescases.search.SearchUseCase
 import com.nhaarman.mockitokotlin2.given
 import kotlinx.coroutines.CoroutineDispatcher
@@ -86,7 +83,7 @@ class SearchUseCaseTest {
 
         given { searchUseCase.invoke("", 1, false) }.willReturn(flowOf(expectedResult))
 
-        searchUseCase.invoke("", 1, true).collect { result ->
+        searchUseCase.invoke("", 1, false).collect { result ->
             assertEquals(expectedResult, result)
         }
     }

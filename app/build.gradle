@@ -113,4 +113,7 @@ dependencies {
 
     // Gson
     implementation generalDependencies.retrofitGson
+
+    //Youtube
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
 }

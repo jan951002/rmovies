@@ -9,120 +9,133 @@
             type="com.jan.rappimovies.domain.movie.Movie" />
     </data>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/halfVerticalGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/halfHorizontalGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.30" />
+
+        <View
+            android:id="@+id/headerBackground"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:background="?colorPrimary"
+            app:layout_constraintBottom_toTopOf="@id/halfHorizontalGuideLine"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/halfVerticalGuideLine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
+        <ImageView
+            android:id="@+id/posterImage"
+            movieDetailImage="@{movie}"
+            android:layout_width="@dimen/image_detail"
+            android:layout_height="@dimen/image_detail"
+            android:layout_marginTop="@dimen/image_detail_margin_top"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/halfHorizontalGuideLine" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/halfHorizontalGuideLine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.35" />
+        <ImageView
+            android:id="@+id/shadowImage"
+            android:layout_width="@dimen/image_ic_play"
+            android:layout_height="@dimen/image_ic_play"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_play_circle"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/posterImage"
+            app:layout_constraintLeft_toLeftOf="@id/posterImage"
+            app:layout_constraintRight_toRightOf="@id/posterImage"
+            app:layout_constraintTop_toTopOf="@id/posterImage" />
 
-            <View
-                android:id="@+id/headerBackground"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="?colorPrimary"
-                app:layout_constraintBottom_toTopOf="@id/halfHorizontalGuideLine"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/titleText"
+            style="@style/Theme.Rappimovies.TextTitleStyle"
+            movieDetailTitle="@{movie}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/content_margin_horizontal"
+            android:layout_marginTop="@dimen/item_double_vertical_margin"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/posterImage"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/posterImage"
-                movieDetailImage="@{movie}"
-                android:layout_width="@dimen/image_detail"
-                android:layout_height="@dimen/image_detail"
-                android:layout_marginTop="@dimen/image_detail_margin_top"
-                android:contentDescription="@string/app_name"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/halfHorizontalGuideLine" />
+        <TextView
+            android:id="@+id/releaseDateText"
+            style="@style/Theme.Rappimovies.TextContentStyle"
+            movieDetailReleaseDate="@{movie}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/content_margin_horizontal"
+            android:layout_marginTop="@dimen/item_double_vertical_margin"
+            android:gravity="center_vertical"
+            app:drawableLeftCompat="@drawable/ic_event"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/halfVerticalGuideLine"
+            app:layout_constraintTop_toBottomOf="@id/posterImage" />
 
-            <TextView
-                android:id="@+id/titleText"
-                style="@style/Theme.Rappimovies.TextTitleStyle"
-                movieDetailTitle="@{movie}"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/content_margin_horizontal"
-                android:layout_marginTop="@dimen/item_double_vertical_margin"
-                android:gravity="center"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@id/posterImage"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/voteAverageText"
+            style="@style/Theme.Rappimovies.TextContentStyle"
+            movieDetailVoteAverage="@{movie}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/content_margin_horizontal"
+            android:layout_marginTop="@dimen/item_double_vertical_margin"
+            android:gravity="center_vertical"
+            app:drawableLeftCompat="@drawable/ic_star_rate"
+            app:layout_constraintLeft_toRightOf="@id/halfVerticalGuideLine"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/posterImage" />
 
-            <TextView
-                android:id="@+id/releaseDateText"
-                style="@style/Theme.Rappimovies.TextContentStyle"
-                movieDetailReleaseDate="@{movie}"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/content_margin_horizontal"
-                android:layout_marginTop="@dimen/item_double_vertical_margin"
-                android:gravity="center_vertical"
-                app:drawableLeftCompat="@drawable/ic_event"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/halfVerticalGuideLine"
-                app:layout_constraintTop_toBottomOf="@id/posterImage" />
+        <View
+            android:id="@+id/dividerGeneralInfo"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/item_vertical_double_margin"
+            android:background="@color/divider_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/releaseDateText" />
 
-            <TextView
-                android:id="@+id/voteAverageText"
-                style="@style/Theme.Rappimovies.TextContentStyle"
-                movieDetailVoteAverage="@{movie}"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/content_margin_horizontal"
-                android:layout_marginTop="@dimen/item_double_vertical_margin"
-                android:gravity="center_vertical"
-                app:drawableLeftCompat="@drawable/ic_star_rate"
-                app:layout_constraintLeft_toRightOf="@id/halfVerticalGuideLine"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/posterImage" />
+        <TextView
+            android:id="@+id/titleOverviewText"
+            style="@style/Theme.Rappimovies.TextImportantStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/content_margin_horizontal"
+            android:layout_marginTop="@dimen/item_vertical_double_margin"
+            android:text="@string/lab_overview"
+            app:drawableLeftCompat="@drawable/ic_overview"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dividerGeneralInfo" />
 
-            <View
-                android:id="@+id/dividerGeneralInfo"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/item_vertical_double_margin"
-                android:background="@color/divider_color"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/releaseDateText" />
-
-            <TextView
-                android:id="@+id/titleOverviewText"
-                style="@style/Theme.Rappimovies.TextImportantStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/content_margin_horizontal"
-                android:layout_marginTop="@dimen/item_vertical_double_margin"
-                android:text="@string/lab_overview"
-                app:drawableLeftCompat="@drawable/ic_overview"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dividerGeneralInfo" />
-
-            <TextView
-                style="@style/Theme.Rappimovies.TextContentStyle"
-                movieDetailOverview="@{movie}"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/content_margin_horizontal"
-                android:layout_marginTop="@dimen/item_vertical_margin"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/titleOverviewText" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/overviewText"
+            style="@style/Theme.Rappimovies.TextContentStyle"
+            movieDetailOverview="@{movie}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/content_margin_horizontal"
+            android:layout_marginTop="@dimen/item_vertical_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleOverviewText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

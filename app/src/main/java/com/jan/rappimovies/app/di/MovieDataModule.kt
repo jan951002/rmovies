@@ -6,6 +6,7 @@ import com.jan.rappimovies.data.movie.MovieLocalDataSource
 import com.jan.rappimovies.data.movie.MovieRemoteDataSource
 import com.jan.rappimovies.data.movie.MovieRepository
 import com.jan.rappimovies.data.movie.MovieRepositoryImpl
+import com.jan.rappimovies.data.video.VideoRemoteDataSource
 import com.jan.rappimovies.databasemanager.AppDatabase
 import com.jan.rappimovies.databasemanager.movie.MovieDao
 import com.jan.rappimovies.databasemanager.movie.MovieLocalDataSourceImpl
@@ -39,6 +40,10 @@ class MovieDataModule {
     @Provides
     @Singleton
     fun movieRepositoryProvider(
-        movieLocalDataSource: MovieLocalDataSource, movieRemoteDataSource: MovieRemoteDataSource
-    ): MovieRepository = MovieRepositoryImpl(movieLocalDataSource, movieRemoteDataSource)
+        movieLocalDataSource: MovieLocalDataSource,
+        movieRemoteDataSource: MovieRemoteDataSource,
+        videoRemoteDataSource: VideoRemoteDataSource
+    ): MovieRepository = MovieRepositoryImpl(
+        movieLocalDataSource, movieRemoteDataSource, videoRemoteDataSource
+    )
 }

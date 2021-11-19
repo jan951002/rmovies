@@ -6,6 +6,7 @@ import com.jan.rappimovies.data.serie.SerieLocalDataSource
 import com.jan.rappimovies.data.serie.SerieRemoteDataSource
 import com.jan.rappimovies.data.serie.SerieRepository
 import com.jan.rappimovies.data.serie.SerieRepositoryImpl
+import com.jan.rappimovies.data.video.VideoRemoteDataSource
 import com.jan.rappimovies.databasemanager.AppDatabase
 import com.jan.rappimovies.databasemanager.serie.SerieDao
 import com.jan.rappimovies.databasemanager.serie.SerieLocalDataSourceImpl
@@ -39,6 +40,10 @@ class SerieDataModule {
     @Provides
     @Singleton
     fun serieRepositoryProvider(
-        serieLocalDataSource: SerieLocalDataSource, serieRemoteDataSource: SerieRemoteDataSource
-    ): SerieRepository = SerieRepositoryImpl(serieLocalDataSource, serieRemoteDataSource)
+        serieLocalDataSource: SerieLocalDataSource,
+        serieRemoteDataSource: SerieRemoteDataSource,
+        videoRemoteDataSource: VideoRemoteDataSource
+    ): SerieRepository = SerieRepositoryImpl(
+        serieLocalDataSource, serieRemoteDataSource, videoRemoteDataSource
+    )
 }

@@ -15,4 +15,5 @@
     <dimen name="image_detail_margin_top">-150dp</dimen>
     <dimen name="big_icon_size">35dp</dimen>
     <dimen name="drawable_margin">4dp</dimen>
+    <dimen name="image_ic_play">100dp</dimen>
 </resources>

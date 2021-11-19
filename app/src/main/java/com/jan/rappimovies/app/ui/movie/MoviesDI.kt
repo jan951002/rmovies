@@ -1,7 +1,8 @@
-package com.jan.rappimovies.app.ui.movie.list
+package com.jan.rappimovies.app.ui.movie
 
 import com.jan.rappimovies.data.movie.MovieRepository
 import com.jan.rappimovies.usescases.movie.CheckRequireNewPageUseCase
+import com.jan.rappimovies.usescases.movie.GetMovieVideosUseCase
 import com.jan.rappimovies.usescases.movie.GetPopularMoviesUseCase
 import com.jan.rappimovies.usescases.movie.GetTopRatedMoviesUseCase
 import dagger.Module
@@ -28,4 +29,9 @@ class MoviesDI {
     @ViewModelScoped
     fun getTopRatedMoviesUseCaseProvider(movieRepository: MovieRepository) =
         GetTopRatedMoviesUseCase(movieRepository)
+
+    @Provides
+    @ViewModelScoped
+    fun getMovieVideosUseCaseProvider(movieRepository: MovieRepository) =
+        GetMovieVideosUseCase(movieRepository)
 }
