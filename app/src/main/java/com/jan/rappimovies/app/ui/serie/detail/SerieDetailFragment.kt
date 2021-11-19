@@ -10,6 +10,7 @@ import com.jan.rappimovies.app.ui.main.MainActivity
 import com.jan.rappimovies.app.ui.video.VideoPlayerActivity
 import com.jan.rappimovies.baseui.BaseFragment
 import com.jan.rappimovies.domain.serie.Serie
+import com.jan.rappimovies.networkmanager.isOnline
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,7 +23,7 @@ class SerieDetailFragment :
         arguments?.getString("serie")?.let {
             val serie = Gson().fromJson(it, Serie::class.java)
             binding.serie = serie
-            serieDetailViewModel.getTrailer(serie.id)
+            if (requireContext().isOnline()) serieDetailViewModel.getTrailer(serie.id)
             observableViewModel()
         }
     }
