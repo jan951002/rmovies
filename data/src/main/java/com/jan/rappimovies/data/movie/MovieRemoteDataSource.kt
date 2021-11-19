@@ -6,5 +6,8 @@ import com.jan.rappimovies.domain.movie.Movie
 
 interface MovieRemoteDataSource {
 
-    suspend fun getMovies(criterion: String, page: Int): Result<List<Movie>, Error<String, Throwable>>
+    suspend fun getMovies(
+        criterion: String,
+        page: Int
+    ): Result<List<Movie>, Error<String, Throwable>>
 }

@@ -16,13 +16,21 @@
         android:theme="@style/Theme.Rappimovies"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.video.VideoPlayerActivity"
+            android:configChanges="orientation"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
             android:name=".ui.search.SearchActivity"
             android:configChanges="orientation"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.main.MainActivity"
             android:configChanges="orientation"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

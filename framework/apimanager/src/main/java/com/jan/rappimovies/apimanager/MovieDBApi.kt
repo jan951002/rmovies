@@ -2,6 +2,7 @@ package com.jan.rappimovies.apimanager
 
 import com.jan.rappimovies.apimanager.general.MovieDBApiBaseResponse
 import com.jan.rappimovies.apimanager.movie.MovieResponse
+import com.jan.rappimovies.apimanager.video.VideosResponse
 import com.jan.rappimovies.apimanager.search.SearchResponse
 import com.jan.rappimovies.apimanager.serie.SerieResponse
 import retrofit2.http.GET
@@ -30,4 +31,11 @@ interface MovieDBApi {
         @Query("api_key") apiKey: String,
         @Query("page") page: Int
     ): MovieDBApiBaseResponse<SearchResponse>
+
+    @GET("{model}/{movie_id}/videos")
+    suspend fun getVideos(
+        @Path(value = "model", encoded = true) model: String,
+        @Path(value = "movie_id", encoded = true) movieId: Long,
+        @Query("api_key") apiKey: String,
+    ): VideosResponse
 }

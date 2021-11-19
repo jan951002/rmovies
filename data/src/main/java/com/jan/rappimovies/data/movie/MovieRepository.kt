@@ -1,10 +1,11 @@
 package com.jan.rappimovies.data.movie
 
-import com.jan.rappimovies.domain.general.PAGE_SIZE_CHECK_NEW_PAGE
-import com.jan.rappimovies.domain.general.PAGE_THRESHOLD_CHECK_NEW_PAGE
-import com.jan.rappimovies.domain.general.Result
+import com.jan.rappimovies.data.video.VideoRemoteDataSource
+import com.jan.rappimovies.domain.general.*
 import com.jan.rappimovies.domain.movie.Movie
+import com.jan.rappimovies.domain.video.Video
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 interface MovieRepository {
     fun getPopularMovies(isOnline: Boolean): Flow<List<Movie>>
@@ -12,11 +13,13 @@ interface MovieRepository {
     suspend fun checkRequireNewPage(
         lastVisible: Int, criterion: String, isFirstRequest: Boolean = false
     )
+    fun getVideos(movieId: Long): Flow<Result<List<Video>, Error<String, Throwable>>>
 }
 
 class MovieRepositoryImpl(
     private val movieLocalDataSource: MovieLocalDataSource,
-    private val movieRemoteDataSource: MovieRemoteDataSource
+    private val movieRemoteDataSource: MovieRemoteDataSource,
+    private val videoRemoteDataSource: VideoRemoteDataSource
 ) : MovieRepository {
 
     override fun getPopularMovies(isOnline: Boolean) =
@@ -40,4 +43,7 @@ class MovieRepositoryImpl(
             }
         }
     }
+
+    override fun getVideos(movieId: Long) =
+        flow { emit(videoRemoteDataSource.getVideos(MOVIE_MODEL, movieId)) }
 }
