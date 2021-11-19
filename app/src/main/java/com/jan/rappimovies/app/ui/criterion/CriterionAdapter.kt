@@ -7,7 +7,7 @@ import com.jan.rappimovies.adaptermanager.inflate
 import com.jan.rappimovies.app.databinding.ItemCriterionViewBinding
 
 class CriterionAdapter(
-    val listener: OnCriterionClickListener
+    initPosition: Int, val listener: OnCriterionClickListener
 ) : ListAdapter<Criterion, CriterionViewHolder>(
     basicDiffUtil<Criterion>(
         areContentsTheSame = { oldItem, newItem -> oldItem.name == newItem.name },
@@ -15,7 +15,7 @@ class CriterionAdapter(
     )
 ) {
 
-    var positionSelected = 0
+    var positionSelected = initPosition
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CriterionViewHolder {
         val binding = parent.inflate(ItemCriterionViewBinding::inflate)
