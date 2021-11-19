@@ -16,6 +16,10 @@
         android:theme="@style/Theme.Rappimovies"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ui.video.VideoPlayerActivity"
             android:configChanges="orientation"
             android:exported="true"
@@ -27,7 +31,7 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.splash.SplashActivity"
             android:configChanges="orientation"
             android:exported="true"
             android:screenOrientation="portrait">
