@@ -31,6 +31,7 @@ class MoviesViewModel @Inject constructor(
     private var currentCriterion = ""
     var firstLaunch = true
         private set
+    var criterionPositionSelected = 0
 
     init {
         viewModelScope.launch {

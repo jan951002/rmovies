@@ -6,8 +6,6 @@
     <string name="youtube_api_key">AIzaSyBWBORyfHmxC46nWhws0C3OKeN8CD_fVDU</string>
     <string name="lab_popular">Popular</string>
     <string name="lab_top_rated">Top rated</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lab_movies">Movies</string>
     <string name="lab_series">Series</string>
     <string name="lab_overview">Overview</string>

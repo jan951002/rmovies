@@ -54,9 +54,13 @@ class SeriesFragment : BaseFragment<FragmentSeriesBinding>(FragmentSeriesBinding
     }
 
     private fun initCriteriaAdapter() {
-        val criterionAdapter = CriterionAdapter { criterionItemClick(it) }.apply {
-            if (seriesViewModel.firstLaunch) criterionItemClick(criteria[0])
-        }
+        val criterionAdapter =
+            CriterionAdapter(seriesViewModel.criterionPositionSelected) { criterion, position ->
+                seriesViewModel.criterionPositionSelected = position
+                criterionItemClick(criterion)
+            }.apply {
+                if (seriesViewModel.firstLaunch) criterionItemClick(criteria[0])
+            }
         binding.criteriaRecycler.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.criteriaRecycler.adapter = criterionAdapter

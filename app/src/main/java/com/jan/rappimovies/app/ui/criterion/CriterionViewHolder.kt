@@ -20,7 +20,7 @@ class CriterionViewHolder(
         binding.criterion = criterion
         itemView.setOnClickListener {
             criterionAdapter.positionSelected = position
-            criterionAdapter.listener.onItemClick(criterion)
+            criterionAdapter.listener.onItemClick(criterion, position)
             criterionAdapter.notifyDataSetChanged()
         }
     }
