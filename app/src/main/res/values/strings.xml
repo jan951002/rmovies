@@ -20,4 +20,5 @@
     <string name="lab_search_general_error">An error has occurred. We are working to fix it!</string>
     <string name="msg_youtube_error">Video player failed</string>
     <string name="lab_video_key_error">Invalid video, please try again later.</string>
+    <string name="lab_welcome">Welcome!</string>
 </resources>
